@@ -1,10 +1,5 @@
 body {
   background-color: white;
-  overscroll-behavior-y: none;
-  overscroll-behavior: none;
-}
-
-
 }
 
 section {
@@ -45,7 +40,6 @@ body {
   -webkit-touch-callout: none;
 }
 
-//new font update
 @font-face {
   font-family: 'Sentient';
   font-style: normal;
@@ -65,9 +59,11 @@ body {
 #datetime {
   font-family: 'Sentient', serif;
   font-weight: bold;
+  color: blue;
 }
 
 #city {
   font-family: 'Sentient', serif;
   font-style: italic;
+  color: blue;
 }
