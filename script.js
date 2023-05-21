@@ -46,27 +46,3 @@ setInterval(() => {
   colorIndex = (colorIndex + 1) % colors.length;
   shape.style.backgroundColor = colors[colorIndex];
 }, 600);
-
-// Add click event listener to the rectangle
-shape.addEventListener("click", function() {
-  // Create the text box element
-  const textBox = document.createElement("textarea");
-  textBox.placeholder = "Enter your message";
-  textBox.classList.add("textbox");
-  
-  // Create the submit button element
-  const submitButton = document.createElement("button");
-  submitButton.innerText = "Submit";
-  
-  // Create a container for the text box and submit button
-  const textContainer = document.createElement("div");
-  textContainer.classList.add("text-container");
-  textContainer.appendChild(textBox);
-  textContainer.appendChild(submitButton);
-  
-  // Append the text container to the body
-  document.body.appendChild(textContainer);
-  
-  // Prevent default click behavior
-  event.preventDefault();
-});
