@@ -45,4 +45,4 @@ const colors = ["#ff0000", "#00ff00", "#0000ff"];
 setInterval(() => {
   colorIndex = (colorIndex + 1) % colors.length;
   shape.style.backgroundColor = colors[colorIndex];
-}, 600);
+}, 750);
