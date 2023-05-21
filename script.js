@@ -5,7 +5,7 @@ document.body.appendChild(shape);
 
 // Create the image element
 const image = document.createElement("img");
-image.src = "dancer.jpg"; // Replace with the appropriate path to your image file
+image.src = "dancer.svg"; // Replace with the appropriate path to your image file
 image.classList.add("image");
 document.body.appendChild(image);
 
