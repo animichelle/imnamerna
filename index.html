@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <title>imna merna</title>
 </head>
@@ -17,10 +17,8 @@
     <!-- here is where we draw -->
   </section>
 
-
   <script src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsHMfETPm3TTbOL-x04Era5ffjFem0AhI&libraries=places"></script>
   <script>
     // Get current date and time
     function getCurrentDateTime() {
@@ -36,49 +34,20 @@
     }
 
     function getVisitorCity() {
-  const cityElement = document.getElementById('city');
+      const cityElement = document.getElementById('city');
+      const apiUrl = 'https://ipapi.co/json/';
 
-  if ('geolocation' in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const geocoder = new google.maps.Geocoder();
-        const latlng = new google.maps.LatLng(latitude, longitude);
-
-        geocoder.geocode({ location: latlng }, (results, status) => {
-          if (status === 'OK' && results.length > 0) {
-            const city = extractCityFromResults(results);
-            cityElement.textContent = city;
-          } else {
-            console.log('Geocoder failed:', status);
-            cityElement.textContent = 'Unable to retrieve city';
-          }
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const city = data.city || 'Unknown';
+          cityElement.textContent = city;
+        })
+        .catch(error => {
+          console.log('Error:', error);
+          cityElement.textContent = 'Unable to retrieve city';
         });
-      },
-      error => {
-        console.log('Error:', error);
-        cityElement.textContent = 'Unable to retrieve city';
-      }
-    );
-  } else {
-    cityElement.textContent = 'Geolocation not supported';
-  }
-}
-
-function extractCityFromResults(results) {
-  for (let i = 0; i < results.length; i++) {
-    for (let j = 0; j < results[i].address_components.length; j++) {
-      const component = results[i].address_components[j];
-      if (component.types.includes('locality')) {
-        return component.long_name;
-      }
     }
-  }
-  return 'Unknown';
-}
-
-
 
     // Initialize
     function init() {
