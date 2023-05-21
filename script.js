@@ -29,9 +29,15 @@ const totalWidth = rectWidth + imageSize;
 
 // Position the image flush with the right edge of the rectangle
 image.style.position = "absolute";
-image.style.top = "50%";
-image.style.left = `calc(50% + ${rectWidth / 2}px)`;
+image.style.top = "52%";
+image.style.left = `calc(42% + ${rectWidth / 2}px)`;
 image.style.transform = "translate(0%, -40%)";
+
+
+// image.style.position = "absolute";
+// image.style.top = "50%";
+// image.style.right = "0";
+// image.style.transform = "translate(50%, -50%)";
 
 // Update the container size to accommodate the total width
 const container = document.querySelector("section");
