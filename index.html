@@ -1,68 +1,61 @@
-body {
-  background-color: white;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <title>imna merna</title>
+</head>
+<body>
+  <header>
+    <div id="datetime"></div>
+    <div id="city"></div>
+  </header>
 
-section {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  <section>
+    <!-- here is where we draw -->
+  </section>
 
-.rectangle {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script>
+    // Get current date and time
+    function getCurrentDateTime() {
+      return moment().format('h:mm:ssa');
+    }
 
-.image {
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 100px);
-  transform: translate(0%, -40%);
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
+    // Update date and time display
+    function updateDateTime() {
+      const datetimeElement = document.getElementById('datetime');
+      datetimeElement.textContent = getCurrentDateTime();
 
-/* Disable zooming */
-body {
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-}
+      setTimeout(updateDateTime, 1000); // Update every second
+    }
 
-//new font update
-@font-face {
-  font-family: 'Sentient';
-  font-style: normal;
-  font-weight: bold;
-  src: url('fonts/sentient-bold.woff2') format('woff2'),
-       url('fonts/sentient-bold.woff') format('woff');
-}
+    function getVisitorCity() {
+      const cityElement = document.getElementById('city');
+      const apiUrl = 'https://ipapi.co/json/';
 
-@font-face {
-  font-family: 'Sentient';
-  font-style: italic;
-  font-weight: normal;
-  src: url('fonts/sentient-italic.woff2') format('woff2'),
-       url('fonts/sentient-italic.woff2') format('woff');
-}
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const city = data.city || 'Unknown';
+          cityElement.textContent = city;
+        })
+        .catch(error => {
+          console.log('Error:', error);
+          cityElement.textContent = 'Unable to retrieve city';
+        });
+    }
 
-#datetime {
-  font-family: 'Sentient', serif;
-  font-weight: bold;
-}
+    // Initialize
+    function init() {
+      updateDateTime();
+      getVisitorCity();
+    }
 
-#city {
-  font-family: 'Sentient', serif;
-  font-style: italic;
-}
+    init();
+  </script>
+</body>
+</html>
