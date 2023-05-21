@@ -1,14 +1,14 @@
 body {
-  background-color: white;
+  overflow: hidden;
 }
 
 section {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
 
 .rectangle {
@@ -20,7 +20,7 @@ section {
 .image {
   position: absolute;
   top: 50%;
-  left: calc(50% + 100px); /* Adjust the offset to position the image appropriately */
+  left: calc(50% + 100px);
   transform: translate(0%, -40%);
   max-width: 100%;
   max-height: 100%;
