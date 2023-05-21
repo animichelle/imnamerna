@@ -1,6 +1,9 @@
 body {
   background-color: white;
   overscroll-behavior-y: none;
+  overscroll-behavior: none;
+}
+
 
 }
 
