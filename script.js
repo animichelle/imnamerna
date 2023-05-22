@@ -3,6 +3,7 @@ const shape = document.createElement("div");
 shape.classList.add("rectangle");
 document.body.appendChild(shape);
 
+
 // Create the image element
 const image = document.createElement("img");
 image.src = "dancer.svg"; // Replace with the appropriate path to your image file
@@ -46,3 +47,28 @@ setInterval(() => {
   colorIndex = (colorIndex + 1) % colors.length;
   shape.style.backgroundColor = colors[colorIndex];
 }, 750);
+
+// Enable drag and drop functionality for the rectangle
+let isDragging = false;
+let initialX, initialY, offsetX, offsetY;
+
+shape.addEventListener("mousedown", (event) => {
+  isDragging = true;
+  initialX = event.clientX;
+  initialY = event.clientY;
+  offsetX = shape.offsetLeft;
+  offsetY = shape.offsetTop;
+});
+
+document.addEventListener("mousemove", (event) => {
+  if (isDragging) {
+    const deltaX = event.clientX - initialX;
+    const deltaY = event.clientY - initialY;
+    shape.style.left = `${offsetX + deltaX}px`;
+    shape.style.top = `${offsetY + deltaY}px`;
+  }
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
