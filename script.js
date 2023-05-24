@@ -1,74 +1,79 @@
-// Create the rectangle shape
-const shape = document.createElement("div");
-shape.classList.add("rectangle");
-document.body.appendChild(shape);
+function createRectangle(leftPosition, topPosition, imageSrc) {
+  const rectangle = document.createElement("div");
+  rectangle.classList.add("rectangle");
+  rectangle.style.position = "fixed";
+  rectangle.style.top = topPosition;
+  rectangle.style.left = leftPosition;
+  rectangle.style.transform = "translate(-50%, -50%)";
+  document.body.appendChild(rectangle);
 
+  const image = document.createElement("img");
+  image.src = imageSrc; 
+  image.classList.add("image");
+  document.body.appendChild(image);
 
-// Create the image element
-const image = document.createElement("img");
-image.src = "dancer.svg"; // Replace with the appropriate path to your image file
-image.classList.add("image");
-document.body.appendChild(image);
+  const rectWidth = parseInt(getComputedStyle(rectangle).width);
+  const rectHeight = parseInt(getComputedStyle(rectangle).height);
+  const imageSize = Math.min(rectWidth, rectHeight) * 1.3; 
 
-// Center align the rectangle
-shape.style.position = "fixed";
-shape.style.top = "50%";
-shape.style.left = "50%";
-shape.style.transform = "translate(-50%, -50%)";
+  image.style.maxWidth = `${imageSize}px`;
+  image.style.maxHeight = `${imageSize}px`;
 
-// Calculate the image size based on the rectangle dimensions
-const rectWidth = parseInt(getComputedStyle(shape).width);
-const rectHeight = parseInt(getComputedStyle(shape).height);
-const imageSize = Math.min(rectWidth, rectHeight) * 1.3; // Adjust the scaling factor as needed
+  image.style.position = "absolute";
+  image.style.top = topPosition;
+  image.style.left = `calc(${leftPosition} + ${rectWidth / 2}px)`;
+  image.style.transform = "translate(-50%, -50%)";
 
-// Adjust the image size while maintaining aspect ratio
-image.style.maxWidth = `${imageSize}px`;
-image.style.maxHeight = `${imageSize}px`;
+  return rectangle;
+}
 
-// Calculate the combined width of the rectangle and image
-const totalWidth = rectWidth + imageSize;
+const rectangle1 = createRectangle("50%", "50%", "dancer.svg");
+const rectangle2 = createRectangle("30%", "20%", "group.svg"); 
 
-// Position the image flush with the right edge of the rectangle
-image.style.position = "absolute";
-image.style.top = "50%";
-image.style.left = `calc(50% + ${rectWidth / 3}px)`;
-image.style.transform = "translate(0%, -40%)";
-
-// Update the container size to accommodate the total width
-const container = document.querySelector("section");
-container.style.width = `${totalWidth}px`;
-
-// Initialize color rotation variables
 let colorIndex = 0;
 const colors = ["#ff0000", "#00ff00", "#0000ff"];
 
-// Update the color rotation every 0.5 seconds
 setInterval(() => {
   colorIndex = (colorIndex + 1) % colors.length;
-  shape.style.backgroundColor = colors[colorIndex];
+  rectangle1.style.backgroundColor = colors[colorIndex];
+  rectangle2.style.backgroundColor = colors[colorIndex];
 }, 750);
 
-// Enable drag and drop functionality for the rectangle
 let isDragging = false;
 let initialX, initialY, offsetX, offsetY;
+let currentRectangle = null;
 
-shape.addEventListener("mousedown", (event) => {
+function startDragging(event, rectangle) {
   isDragging = true;
   initialX = event.clientX;
   initialY = event.clientY;
-  offsetX = shape.offsetLeft;
-  offsetY = shape.offsetTop;
-});
+  offsetX = rectangle.offsetLeft;
+  offsetY = rectangle.offsetTop;
+  currentRectangle = rectangle;
+}
 
-document.addEventListener("mousemove", (event) => {
-  if (isDragging) {
+function moveRectangle(event) {
+  if (isDragging && currentRectangle) {
     const deltaX = event.clientX - initialX;
     const deltaY = event.clientY - initialY;
-    shape.style.left = `${offsetX + deltaX}px`;
-    shape.style.top = `${offsetY + deltaY}px`;
+    currentRectangle.style.left = `${offsetX + deltaX}px`;
+    currentRectangle.style.top = `${offsetY + deltaY}px`;
   }
+}
+
+function stopDragging() {
+  isDragging = false;
+  currentRectangle = null;
+}
+
+rectangle1.addEventListener("mousedown", (event) => {
+  startDragging(event, rectangle1);
 });
 
-document.addEventListener("mouseup", () => {
-  isDragging = false;
+rectangle2.addEventListener("mousedown", (event) => {
+  startDragging(event, rectangle2);
 });
+
+document.addEventListener("mousemove", moveRectangle);
+
+document.addEventListener("mouseup", stopDragging);
