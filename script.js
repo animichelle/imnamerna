@@ -28,7 +28,7 @@ function createRectangle(leftPosition, topPosition, imageSrc) {
 }
 
 const rectangle1 = createRectangle("50%", "50%", "dancer.svg");
-const rectangle2 = createRectangle("30%", "20%", "group.svg"); 
+//const rectangle2 = createRectangle("30%", "20%", "group.svg"); 
 
 let colorIndex = 0;
 const colors = ["#ff0000", "#00ff00", "#0000ff"];
@@ -70,9 +70,9 @@ rectangle1.addEventListener("mousedown", (event) => {
   startDragging(event, rectangle1);
 });
 
-rectangle2.addEventListener("mousedown", (event) => {
-  startDragging(event, rectangle2);
-});
+// rectangle2.addEventListener("mousedown", (event) => {
+//   startDragging(event, rectangle2);
+// });
 
 document.addEventListener("mousemove", moveRectangle);
 
