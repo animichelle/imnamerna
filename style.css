@@ -1,72 +1,46 @@
 body {
-  background-color: white;
-  overscroll-behavior: none;
-  overscroll-behavior-y: none;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    overflow: hidden;
 }
 
-section {
-  width: 500px;
-  height: 500px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.container {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+    left: 4px;
+    border: 12px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-.rectangle {
-  width: 100px;
-  height: 100px;
-  background-color: red;
+.title {
+    position: absolute;
+    top: 26px;
+    left: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 22px;
+    color: black;
 }
 
-.image {
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 100px);
-  transform: translate(0%, -40%);
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+.logo {
+    max-width: 58%;
+    max-height: 70%;
+    display: block;
+    margin: auto;
 }
 
-/* Disable zooming */
-body {
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-}
-
-@font-face {
-  font-family: 'Sentient';
-  font-style: normal;
-  font-weight: bold;
-  src: url('fonts/sentient-bold.woff2') format('woff2'),
-       url('fonts/sentient-bold.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Sentient';
-  font-style: italic;
-  font-weight: normal;
-  src: url('fonts/sentient-italic.woff2') format('woff2'),
-       url('fonts/sentient-italic.woff2') format('woff');
-}
-
-#datetime {
-  font-family: 'Sentient', serif;
-  font-weight: bold;
-  color: blue;
-}
-
-#city {
-  font-family: 'Sentient', serif;
-  font-style: italic;
-  color: blue;
+.footer-text {
+    font-family: 'Roboto', sans-serif; /* Use Roboto font */
+    font-size: 8px;
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
