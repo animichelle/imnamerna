@@ -1,61 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.svg">
-  <link rel="stylesheet" href="style.css">
-  <title>imna merna</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div id="datetime"></div>
-    <div id="city"></div>
-  </header>
-
-  <section>
-    <!-- here is where we draw -->
-  </section>
-
-  <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script>
-    // Get current date and time
-    function getCurrentDateTime() {
-      return moment().format('h:mm:ssa');
-    }
-
-    // Update date and time display
-    function updateDateTime() {
-      const datetimeElement = document.getElementById('datetime');
-      datetimeElement.textContent = getCurrentDateTime();
-
-      setTimeout(updateDateTime, 1000); // Update every second
-    }
-
-    function getVisitorCity() {
-      const cityElement = document.getElementById('city');
-      const apiUrl = 'https://ipapi.co/json/';
-
-      fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-          const city = data.city || 'Unknown';
-          cityElement.textContent = city;
-        })
-        .catch(error => {
-          console.log('Error:', error);
-          cityElement.textContent = 'Unable to retrieve city';
-        });
-    }
-
-//     // Initialize
-//     function init() {
-//       updateDateTime();
-//       getVisitorCity();
-//     }
-
-    init();
-  </script>
+    <div class="container">
+        <div class="title">IMNA MERNA</div>
+        <img src="logo.png" alt="Your Logo" class="logo">
+        <div class="footer-text">IMNA MERNA © 2023 // ALL RIGHTS RESERVED</div>
+    </div>
 </body>
 </html>
