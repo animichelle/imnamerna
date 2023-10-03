@@ -15,7 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     box-sizing: border-box;
 }
 
@@ -24,13 +24,13 @@ body {
     top: 26px;
     left: 28px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 600; /* SemiBold */
+    font-weight: 600;
     font-size: 22px;
     color: black;
 }
 
 .logo {
-    max-width: 58%;
+    max-width: 48%;
     max-height: 70%;
     display: block;
     margin: auto;
@@ -43,4 +43,22 @@ body {
     position: absolute;
     bottom: 10px;
     right: 10px;
+}
+
+.text-box {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 300;
+    margin-left: 28px; /* Adjusted to match the left padding of the title */
+    position: absolute;
+}
+
+.about-box {
+    bottom: 68px; /* Adjust the distance for the first text box */
+}
+
+.pitch-box {
+    bottom: 50px; /* Adjust the distance for the second text box */
+}
 }
