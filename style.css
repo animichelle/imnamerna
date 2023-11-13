@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #000000;
     overflow: hidden;
 }
 
@@ -11,7 +11,7 @@ body {
     right: 4px;
     bottom: 4px;
     left: 4px;
-    border: 12px solid black;
+    border: 2px solid rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -21,25 +21,34 @@ body {
 
 .title {
     position: absolute;
-    top: 26px;
-    left: 28px;
+    top: 20%;
+    left: ;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     font-size: 22px;
-    color: black;
+    color: rgb(241, 241, 241);
 }
 
 .logo {
-    max-width: 48%;
+    max-width: 80%;
     max-height: 70%;
     display: block;
     margin: auto;
 }
 
+.tagline {
+    max-width: 50px; /* Adjusted max-width */
+    width: auto; /* Allow the width to adjust according to the content */
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%); /* Center the tagline horizontally */
+}
+
 .footer-text {
     font-family: 'Roboto', sans-serif; /* Use Roboto font */
     font-size: 8px;
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.3);
     position: absolute;
     bottom: 10px;
     right: 10px;
