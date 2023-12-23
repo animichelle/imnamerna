@@ -9,11 +9,27 @@
 </head>
 <body>
     <div class="container">
-        <div class="title"></div>
-<!--         <div class="text-box about-box">ABOUT</div>
-        <div class="text-box pitch-box">PITCH</div> -->
-        <div class="footer-text"></div>
-        <img src="logo.png" alt="logo" class="logo">
+        <div class="title">Your Title Goes Here</div>
+        <div class="logo">
+            <img src="logo.png" alt="logo" id="gyroImage">
+        </div>
+        <div class="footer-text">Your Footer Text Here</div>
     </div>
+
+    <script>
+        window.addEventListener('deviceorientation', handleOrientation);
+
+        function handleOrientation(event) {
+            const gamma = event.gamma || 0; // Get the device's gamma rotation
+            const dropShadow = document.getElementById('gyroImage').style;
+
+            // Calculate drop shadow properties based on gamma value
+            const shadowX = gamma / 5; // Adjust based on your preference
+            const shadowY = gamma / 5; // Adjust based on your preference
+
+            // Apply the calculated drop shadow to the image
+            dropShadow.boxShadow = `${shadowX}px ${shadowY}px 10px rgba(0, 0, 0, 0.5)`;
+        }
+    </script>
 </body>
 </html>
