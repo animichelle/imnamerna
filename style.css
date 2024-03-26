@@ -70,3 +70,28 @@ body {
   font-style: italic;
   color: blue;
 }
+
+#bottomContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0; /* Adjust as needed */
+  font-family: Helvetica;
+  font-style: oblique;
+}
+
+.bottomHeader {
+  margin: 0 0 10px; /* 10px bottom margin to space above the bottom text */
+  font-size: 1.1em; /* Adjust font size as needed */
+  color: rgb(209, 209, 209); /* Adjust text color as needed */
+  /* Additional styling */
+}
+
+#bottomText {
+  margin: 0; /* Ensures no extra space around the text */
+  font-size: 0.9em; /* Adjust font size as needed */
+  color: rgb(83, 69, 69); /* Adjust text color as needed */
+  /* Additional styling */
+}
