@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imna, merna</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favinew.png" type="image/png" sizes="64x64">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <title>imna merna</title>
 </head>
 <body>
-    <div class="container">
-        <div class="title"></div>
-<!--         <div class="text-box about-box">ABOUT</div>
-        <div class="text-box pitch-box">PITCH</div> -->
-        <div class="footer-text"></div>
-        <img src="logo.png" alt="logo" class="logo">
-    </div>
+  <!-- removing time and city feature -->
+  <!-- <header>
+    <div id="datetime"></div>
+    <div id="city"></div>
+  </header> -->
+
+  <section>
+    <!-- need this for two.js functionality -->
+  </section>
+  <script src="script.js"></script>
+  <script>
+    // Get current date and time
+    function getCurrentDateTime() {
+      return moment().format('h:mm:ssa');
+    }
+
+    // Update date and time display
+    function updateDateTime() {
+      const datetimeElement = document.getElementById('datetime');
+      datetimeElement.textContent = getCurrentDateTime();
+
+      setTimeout(updateDateTime, 1000); // Update every second
+    }
+
+    function getVisitorCity() {
+      const cityElement = document.getElementById('city');
+      const apiUrl = 'https://ipapi.co/json/';
+
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const city = data.city || 'Unknown';
+          cityElement.textContent = city;
+        })
+        .catch(error => {
+          console.log('Error:', error);
+          cityElement.textContent = 'Unable to retrieve city';
+        });
+    }
+
+//     // Initialize
+//     function init() {
+//       updateDateTime();
+//       getVisitorCity();
+//     }
+
+    init();
+  </script>
 </body>
 </html>
